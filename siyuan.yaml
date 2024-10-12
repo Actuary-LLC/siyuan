@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  main:
+    image: b3log/siyuan:v3.1.8
+    command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=password']
+    ports:
+      - 6806:6806
+    volumes:
+      - /mnt/user/docker/volumes/siyuan/workspace:/siyuan/workspace
+    #restart: unless-stopped
+    environment:
+      # A list of time zone identifiers can be found at https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+      - TZ=America/Chicago
+      - PUID=99 
+      - PGID=100
