@@ -22,4 +22,4 @@ services:
         - "traefik.http.routers.notes.tls.certresolver=myresolver"
         - "traefik.http.services.notes.loadbalancer.server.port=6806"
         ## Middlewares
-        - "traefik.http.routers.notes.middlewares=middlewares-authentik@file"
+        - "traefik.http.routers.notes.middlewares=authentik"
