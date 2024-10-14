@@ -13,3 +13,13 @@ services:
       - TZ=America/Chicago
       - PUID=99 
       - PGID=100
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.notes.rule=Host(`notes.actuary.dev`)"
+        - "traefik.http.routers.notes.entrypoints=websecure"
+        - "traefik.http.routers.notes.service=notes"
+        - "traefik.http.routers.notes.tls.certresolver=myresolver"
+        - "traefik.http.services.notes.loadbalancer.server.port=6806"
+        ## Middlewares
+        - "traefik.http.routers.task.middlewares=middlewares-authentik@file"
