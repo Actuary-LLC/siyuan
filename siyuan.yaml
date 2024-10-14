@@ -1,7 +1,16 @@
 version: "3.9"
+
+networks:
+  #owntracks_network:
+  #  name: owntracks_network
+  reverse-proxy:
+    external: true
+
 services:
   siyuan:
     image: b3log/siyuan:v3.1.8
+    networks:
+      reverse-proxy:
     command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=password']
     ports:
       - 6806:6806
@@ -17,9 +26,9 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.notes.rule=Host(`notes.actuary.dev`)"
-        #- "traefik.http.routers.notes.entrypoints=websecure"
-        #- "traefik.http.routers.notes.service=notes"
-        #- "traefik.http.routers.notes.tls.certresolver=myresolver"
+        - "traefik.http.routers.notes.entrypoints=websecure"
+        - "traefik.http.routers.notes.service=notes"
+        - "traefik.http.routers.notes.tls.certresolver=myresolver"
         - "traefik.http.services.notes.loadbalancer.server.port=6806"
         ## Middlewares
         - "traefik.http.routers.notes.middlewares=authentik"
