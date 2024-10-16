@@ -33,7 +33,7 @@ services:
         #- "traefik.http.routers.notes.service=notes"
         #- "traefik.http.routers.notes.tls.certresolver=myresolver"
         #- "traefik.http.services.notes.loadbalancer.server.port=6806"
-        - "traefik.http.middlewares.newapp-auth.forwardauth.address=https://auth.actuary.dev/outpost.goauthentik.io/"
+        - "traefik.http.middlewares.newapp-auth.forwardauth.address=https://authentik.actuary.dev/outpost.goauthentik.io/"
         - "traefik.http.middlewares.newapp-auth.forwardauth.trustForwardHeader=true"
         - "traefik.http.routers.newapp.middlewares=newapp-auth"
         ## Middlewares
