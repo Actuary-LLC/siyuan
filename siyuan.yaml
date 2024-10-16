@@ -25,10 +25,16 @@ services:
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.notes.rule=Host(`notes.actuary.dev`)"
-        - "traefik.http.routers.notes.entrypoints=websecure"
-        - "traefik.http.routers.notes.service=notes"
-        - "traefik.http.routers.notes.tls.certresolver=myresolver"
-        - "traefik.http.services.notes.loadbalancer.server.port=6806"
+        - "traefik.http.routers.newapp-auth.rule=Host(`notes.actuary.dev`)"
+        - "traefik.http.routers.newapp.entrypoints=websecure"
+        - "traefik.http.routers.newapp.tls=true"
+        - "traefik.http.routers.newapp.tls.certresolver=myresolver"
+        #- "traefik.http.routers.notes.entrypoints=websecure"
+        #- "traefik.http.routers.notes.service=notes"
+        #- "traefik.http.routers.notes.tls.certresolver=myresolver"
+        #- "traefik.http.services.notes.loadbalancer.server.port=6806"
+        - "traefik.http.middlewares.newapp-auth.forwardauth.address=https://auth.actuary.dev/outpost.goauthentik.io/"
+        - "traefik.http.middlewares.newapp-auth.forwardauth.trustForwardHeader=true"
+        - "traefik.http.routers.newapp.middlewares=newapp-auth"
         ## Middlewares
-        - "traefik.http.routers.notes.middlewares=authentik"
+        #- "traefik.http.routers.notes.middlewares=authentik"
