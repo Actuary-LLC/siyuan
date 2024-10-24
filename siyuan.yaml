@@ -8,7 +8,7 @@ networks:
 
 services:
   siyuan:
-    image: b3log/siyuan:v3.1.9
+    image: b3log/siyuan:v3.1.10
     networks:
       reverse-proxy:
     command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=password']
