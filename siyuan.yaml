@@ -39,3 +39,6 @@ services:
         #- "traefik.http.routers.newapp.middlewares=newapp-auth"
         ## Middlewares
         - "traefik.http.routers.notes.middlewares=authentik@file"
+        #DIUN
+        - diun.enable = true
+        - diun.notify_on = new
