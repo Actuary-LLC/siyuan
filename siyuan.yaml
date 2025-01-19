@@ -29,7 +29,7 @@ services:
         - "traefik.http.routers.notes.tls.certresolver=myresolver"
         - "traefik.http.services.notes.loadbalancer.server.port=6806"
         ## Middlewares
-        - "traefik.http.routers.notes.middlewares=authentik"
+        - "traefik.http.routers.notes.middlewares=authentik@file"
         #DIUN
         - diun.enable = true
         - diun.notify_on = new
