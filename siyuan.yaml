@@ -9,7 +9,7 @@ services:
     image: b3log/siyuan:v3.1.20 #https://hub.docker.com/r/b3log/siyuan/tags
     networks:
       reverse-proxy:
-    command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=']
+    command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=password']
     ports:
       - 6806:6806
     volumes:
