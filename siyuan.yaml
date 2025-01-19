@@ -5,11 +5,11 @@ networks:
     external: true
 
 services:
-  siyuan:
+  main:
     image: b3log/siyuan:v3.1.20 #https://hub.docker.com/r/b3log/siyuan/tags
     networks:
       reverse-proxy:
-    command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=password']
+    command: ['--workspace=/siyuan/workspace/']
     ports:
       - 6806:6806
     volumes:
