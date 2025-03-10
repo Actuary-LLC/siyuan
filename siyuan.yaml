@@ -6,7 +6,7 @@ networks:
 
 services:
   main:
-    image: b3log/siyuan:v3.1.20 #https://hub.docker.com/r/b3log/siyuan/tags
+    image: b3log/siyuan:v3.1.24 #https://hub.docker.com/r/b3log/siyuan/tags
     networks:
       reverse-proxy:
     command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=password']
