@@ -6,7 +6,7 @@ networks:
 
 services:
   main:
-    image: b3log/siyuan:v3.4.2 #https://hub.docker.com/r/b3log/siyuan/tags
+    image: b3log/siyuan:v3.6.1 #https://hub.docker.com/r/b3log/siyuan/tags
     networks:
       reverse-proxy:
     command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=password']
@@ -24,6 +24,35 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.notes.rule=Host(`notes.actuary.dev`)"
+        - "traefik.http.routers.notes.entrypoints=websecure"
+        - "traefik.http.routers.notes.service=notes"
+        - "traefik.http.routers.notes.tls.certresolver=myresolver"
+        - "traefik.http.services.notes.loadbalancer.server.port=6806"
+        ## Middlewares
+        - "traefik.http.routers.notes.middlewares=authentik@file"
+        #DIUN
+        - diun.enable = true
+        - diun.notify_on = new
+
+  rachel:
+    image: b3log/siyuan:v3.6.1 #https://hub.docker.com/r/b3log/siyuan/tags
+    networks:
+      reverse-proxy:
+    command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=5862']
+    ports:
+      - 6806:6806
+    volumes:
+      - /mnt/user/docker/volumes/rachel/siyuan/workspace:/siyuan/workspace
+    #restart: unless-stopped
+    environment:
+      # A list of time zone identifiers can be found at https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+      - TZ=America/Chicago
+      - PUID=99 
+      - PGID=100
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.notes.rule=Host(`brain.actuary.dev`)"
         - "traefik.http.routers.notes.entrypoints=websecure"
         - "traefik.http.routers.notes.service=notes"
         - "traefik.http.routers.notes.tls.certresolver=myresolver"
