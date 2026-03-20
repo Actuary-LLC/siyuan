@@ -39,8 +39,6 @@ services:
     networks:
       reverse-proxy:
     command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=5862']
-    ports:
-      - 6807:6806
     volumes:
       - /mnt/user/docker/volumes/rachel/siyuan/workspace:/siyuan/workspace
     #restart: unless-stopped
@@ -56,7 +54,7 @@ services:
         - "traefik.http.routers.brain.entrypoints=websecure"
         - "traefik.http.routers.brain.service=brain"
         - "traefik.http.routers.brain.tls.certresolver=myresolver"
-        - "traefik.http.services.brain.loadbalancer.server.port=6807"
+        - "traefik.http.services.brain.loadbalancer.server.port=6806"
         ## Middlewares
         - "traefik.http.routers.brain.middlewares=authentik@file"
         #DIUN
