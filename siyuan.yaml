@@ -52,13 +52,13 @@ services:
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.notes.rule=Host(`brain.actuary.dev`)"
-        - "traefik.http.routers.notes.entrypoints=websecure"
-        - "traefik.http.routers.notes.service=notes"
-        - "traefik.http.routers.notes.tls.certresolver=myresolver"
-        - "traefik.http.services.notes.loadbalancer.server.port=6806"
+        - "traefik.http.routers.brain.rule=Host(`brain.actuary.dev`)"
+        - "traefik.http.routers.brain.entrypoints=websecure"
+        - "traefik.http.routers.brain.service=brain"
+        - "traefik.http.routers.brain.tls.certresolver=myresolver"
+        - "traefik.http.services.brain.loadbalancer.server.port=6806"
         ## Middlewares
-        - "traefik.http.routers.notes.middlewares=authentik@file"
+        - "traefik.http.routers.brain.middlewares=authentik@file"
         #DIUN
         - diun.enable = true
         - diun.notify_on = new
