@@ -6,7 +6,7 @@ networks:
 
 services:
   main:
-    image: b3log/siyuan:v3.7.1 #https://hub.docker.com/r/b3log/siyuan/tags
+    image: b3log/siyuan:v3.8.2 #https://hub.docker.com/r/b3log/siyuan/tags
     networks:
       reverse-proxy:
     command: ['serve', '--workspace=/siyuan/workspace']
@@ -35,7 +35,7 @@ services:
         - diun.notify_on = new
 
   rachel:
-    image: b3log/siyuan:v3.6.1 #https://hub.docker.com/r/b3log/siyuan/tags
+    image: b3log/siyuan:v3.8.2 #https://hub.docker.com/r/b3log/siyuan/tags
     networks:
       reverse-proxy:
     command: ['--workspace=/siyuan/workspace', '--accessAuthCode=${SIYUAN_ACCESS_AUTH_CODE}']
