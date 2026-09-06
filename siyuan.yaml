@@ -38,7 +38,7 @@ services:
     image: b3log/siyuan:v3.6.1 #https://hub.docker.com/r/b3log/siyuan/tags
     networks:
       reverse-proxy:
-    command: ['--workspace=/siyuan/workspace/', '--accessAuthCode=5862']
+    command: ['--workspace=/siyuan/workspace/']
     volumes:
       - /mnt/user/docker/volumes/rachel/siyuan/workspace:/siyuan/workspace
     #restart: unless-stopped
